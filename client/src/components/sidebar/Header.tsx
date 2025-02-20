@@ -29,7 +29,7 @@ const Header = () => {
                         <h1 className="text-xl text-blue-400 border-b-8 border-blue-400 font-medium">Cloud Files</h1>
                     </div>
                     {
-                        (user || userInfo) && (
+                        (user == null || userInfo) && (
                             <a href="/" className="text-xl hover:text-blue-500  font-medium text-white p-2 rounded-md shadow-md">My Files</a>
                         )
                     }
@@ -38,7 +38,7 @@ const Header = () => {
                 <div className="flex">
                     <div className="text-sm">
                         {
-                            (user || userInfo) && (
+                            (user != null || userInfo) && (
                                 <div className="flex gap-2">
                                     <div className="text-muted-foreground text-md text-white font-medium  rounded-md p-2 border-2 border-blue-950 bg-blue-900 shadow-md">{userInfo?.createdUser?.username}</div>
                                     <Button variant={'destructive'} onClick={() => handleLogout()}>Logout</Button>

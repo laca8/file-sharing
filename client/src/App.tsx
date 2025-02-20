@@ -20,7 +20,7 @@ function App() {
       <Routes>
         <Route path='/login' element={user || userInfo ? <Share /> : <SignInForm />}></Route>
         <Route path='/register' element={user || userInfo ? <Share /> : <SignUp />}></Route>
-        <Route path='/' element={<Share />}></Route>
+        <Route path='/' element={user != null || userInfo ? <Share /> : <SignInForm />}></Route>
         <Route path='/share/:id' element={<Folder />}></Route>
       </Routes>
     </BrowserRouter>
