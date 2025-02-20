@@ -10,6 +10,8 @@ const addFolder = async (row: folder, config: Config): Promise<object> => {
 //fetch folders
 const getFolders = async (config: Config): Promise<object> => {
   const response = await axios.get(API_URL_POST, config);
+  console.log(response);
+  
   return await response.data;
 };
 //fetch folder by id
