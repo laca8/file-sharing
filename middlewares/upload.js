@@ -24,7 +24,7 @@ const ALLOWED_FILE_TYPES = {
     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
   ],
 };
-const uploadDir = path.join(__dirname, "uploads");
+const uploadDir = "/tmp/uploads";
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
 }
