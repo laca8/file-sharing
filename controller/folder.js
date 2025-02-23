@@ -91,6 +91,7 @@ const addFileToFolder = async (req, res, next) => {
       .pop()
       .toLowerCase();
     let resource_type;
+    console.log(fileExtension);
 
     // Set resource_type based on file extension
     if (["jpg", "jpeg", "png", "gif", "webp"].includes(fileExtension)) {

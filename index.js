@@ -10,12 +10,12 @@ const connDb = require("./config/db");
 const ApiError = require("./utils/apiError");
 const app = express();
 
-const uploadDir = path.join(__dirname, "uploads");
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
-}
+// const uploadDir = path.join(__dirname, "uploads");
+// if (!fs.existsSync(uploadDir)) {
+//   fs.mkdirSync(uploadDir, { recursive: true });
+// }
 
-app.use("/uploads", express.static(uploadDir));
+// app.use("/uploads", express.static(uploadDir));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: "http://localhost:5173", credentials: true }));
