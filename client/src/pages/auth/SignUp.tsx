@@ -36,7 +36,7 @@ export default function SignUp() {
         }
         dispatch(registerUser(user))
         if (createdUser) {
-            window.location.href = '/'
+            window.location.href = '/admin/users'
         }
         setUser({
             username: '',
@@ -51,7 +51,7 @@ export default function SignUp() {
             <div className="p-6 flex flex-col gap-4 max-md:p-6">
                 <div className="space-y-2 text-left text-blue-600">
 
-                    <h1 className="text-3xl font-bold ">Sign Up & Create new User</h1>
+                    <h1 className="text-3xl font-bold ">Create New User</h1>
                 </div>
                 {
                     err != '' ? (
@@ -71,15 +71,15 @@ export default function SignUp() {
                                 <Input className="border-2 border-blue-400" placeholder="john doe" type="text" required name="username" value={user.username} onChange={handleChange} />
                                 <Input className="border-2 border-blue-400" placeholder="******" type="password" required name="password" value={user.password} onChange={handleChange} />
                                 <Button type="submit" className="w-full" disabled={loading}>
-                                    {loading ? "Sending..." : "Sign Up"}
+                                    {loading ? "Sending..." : "Add User"}
                                 </Button>
                             </form>
-                            <p >you already have account..?  {'  '}
+                            {/* <p >you already have account..?  {'  '}
                                 <a href="/login" className="border-b text-blue-500 font-semibold">
                                     Sign In
 
                                 </a>
-                            </p>
+                            </p> */}
                         </>
 
 

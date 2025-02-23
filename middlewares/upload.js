@@ -24,6 +24,7 @@ const ALLOWED_FILE_TYPES = {
     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
   ],
 };
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "uploads/"); // Files will be stored in 'uploads' directory

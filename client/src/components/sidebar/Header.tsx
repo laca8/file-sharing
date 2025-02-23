@@ -4,7 +4,12 @@ import { logout } from "../../redux/slicers/userSlice";
 import { AppDispatch } from "../../redux/store";
 import { user } from "../../type";
 
-
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from "../ui/dropdown-menu"
 
 const Header = () => {
     const dispatch = useDispatch<AppDispatch>()
@@ -33,6 +38,24 @@ const Header = () => {
                             <a href="/" className="text-xl hover:text-blue-500  font-medium text-white p-2 rounded-md shadow-md">My Files</a>
                         )
                     }
+                    {
+                        (user != null && user?.createdUser?.admin) && (
+                            <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
+                                    <Button variant="outline">admin</Button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent className="w-56">
+                                    <DropdownMenuItem>
+                                        <a href="/admin/newUser" className="text-xl hover:text-blue-500  font-medium ">Add New User</a>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem>
+                                        <a href="/admin/users" className="text-xl hover:text-blue-500  font-medium ">Users</a>
+                                    </DropdownMenuItem>
+                                </DropdownMenuContent>
+                            </DropdownMenu>
+
+                        )
+                    }
 
                 </div>
                 <div className="flex">
@@ -40,7 +63,7 @@ const Header = () => {
                         {
                             (user != null || userInfo) && (
                                 <div className="flex gap-2">
-                                    <div className="text-muted-foreground text-md text-white font-medium  rounded-md p-2 border-2 border-blue-950 bg-blue-900 shadow-md">{userInfo?.createdUser?.username}</div>
+                                    <div className="text-muted-foreground text-md text-white font-medium  rounded-md p-2 border-2 border-blue-950 bg-blue-900 shadow-md cursor-pointer" onClick={() => window.location.href = '/profile'}>{userInfo?.createdUser?.username}</div>
                                     <Button variant={'destructive'} onClick={() => handleLogout()}>Logout</Button>
                                 </div>
                             )

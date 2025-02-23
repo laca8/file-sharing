@@ -61,8 +61,6 @@ const List = ({ folders }: Props) => {
     });
     return (
         <Card>
-
-
             {
                 error && <Error message={error} />
             }
@@ -92,7 +90,7 @@ const List = ({ folders }: Props) => {
                                             <TableCell className='w-20'>{(y?.size / Math.pow(1024, 2)).toFixed(2)} MB</TableCell>
                                             <TableCell className='w-56'>{y?.createdAt ? formatter.format(new Date(y?.createdAt)) : ''}</TableCell>
                                             {
-                                                z.name == 'Received' ? y.comment ? <TableCell>
+                                                z.name == 'Received' && <TableCell>
                                                     <TooltipProvider >
                                                         <Tooltip >
                                                             <TooltipTrigger className='bg-blue-50 text-black shadow-md rounded-md  p-2'>Show Comment</TooltipTrigger>
@@ -101,16 +99,7 @@ const List = ({ folders }: Props) => {
                                                             </TooltipContent>
                                                         </Tooltip>
                                                     </TooltipProvider>
-                                                </TableCell> : <TableCell >
-                                                    < TooltipProvider >
-                                                        <Tooltip >
-                                                            <TooltipTrigger className='bg-blue-50 text-black shadow-md rounded-md  p-2'>Show Comment</TooltipTrigger>
-                                                            <TooltipContent className='w-20 text-center'>
-                                                                <p>{'No Comment'}</p>
-                                                            </TooltipContent>
-                                                        </Tooltip>
-                                                    </TooltipProvider>
-                                                </TableCell> : null
+                                                </TableCell>
 
                                             }
                                             <TableCell className='w-12'>

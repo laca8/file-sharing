@@ -42,6 +42,8 @@ const login = async (req, res, next) => {
     }
     const createdUser = {
       username: user.username,
+      admin: user.admin,
+      _id: user._id,
     };
     const token = createToken(user._id);
     return res.status(201).json({ createdUser, token });
@@ -53,7 +55,7 @@ const login = async (req, res, next) => {
 };
 const getUsers = async (req, res, next) => {
   try {
-    const users = await User.find({}).select("username _id ");
+    const users = await User.find({}).select("username admin _id  ");
     //console.log(usersFilter);
 
     return res.status(200).send(users);
@@ -61,8 +63,51 @@ const getUsers = async (req, res, next) => {
     return next(new ApiError(error.message, 500));
   }
 };
+const deleteUser = async (req, res, next) => {
+  try {
+    const user = await User.findByIdAndDelete({ _id: req.params.id });
+    //console.log(usersFilter);
+
+    return res.status(200).send("user deleted...");
+  } catch (error) {
+    return next(new ApiError(error.message, 500));
+  }
+};
+
+const updatePassword = async (req, res, next) => {
+  try {
+    const { password } = req.body;
+    const user = await User.findById({ _id: req.params.id });
+    if (user) {
+      const salt = await bcrypt.genSalt(10);
+      const newPassword = await bcrypt.hash(password, salt);
+      // console.log(newPassword, password);
+
+      await User.findByIdAndUpdate(
+        {
+          _id: req.params.id,
+        },
+        {
+          password: newPassword,
+        },
+        {
+          new: true,
+        }
+      );
+    }
+    //console.log(usersFilter);
+
+    return res.status(200).send("user deleted...");
+  } catch (error) {
+    console.log(error);
+
+    return next(new ApiError(error.message, 500));
+  }
+};
 module.exports = {
   register,
   login,
   getUsers,
+  deleteUser,
+  updatePassword,
 };

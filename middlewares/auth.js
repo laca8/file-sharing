@@ -27,7 +27,7 @@ const protect = async (req, res, next) => {
   }
 };
 const allowTo = async (req, res, next) => {
-  if (!req.user.isAdmin) {
+  if (!req.user.admin) {
     return res
       .status(500)
       .json({ message: "user is not allow to access this route" });

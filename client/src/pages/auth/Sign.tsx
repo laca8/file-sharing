@@ -73,12 +73,12 @@ export default function SignInForm() {
                                     {loading ? "Sending..." : "Sign In"}
                                 </Button>
                             </form>
-                            <p >you aren`t have any account.?  {'  '}
+                            {/* <p >you aren`t have any account.?  {'  '}
                                 <a href="/register" className="border-b text-blue-500 font-semibold">
                                     Sign Up
 
                                 </a>
-                            </p>
+                            </p> */}
                         </>
 
 

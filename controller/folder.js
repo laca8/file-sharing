@@ -86,7 +86,10 @@ const addFileToFolder = async (req, res, next) => {
   try {
     // console.log(req.body.folderId.toString());
     // console.log(req.file);
-    const fileExtension = req.file.originalname.split(".").pop().toLowerCase();
+    const fileExtension = req?.file?.originalname
+      .split(".")
+      .pop()
+      .toLowerCase();
     let resource_type;
 
     // Set resource_type based on file extension
@@ -232,6 +235,9 @@ const sendFile = async (req, res, next) => {
       userId: userReciever._id,
     });
     if (!folder_exist) {
+      console.log(req.body.comment);
+      // console.log(fileExist);
+
       const folder_created = await Folder.create({
         name: "Received",
         userId: userReciever._id,
@@ -240,6 +246,8 @@ const sendFile = async (req, res, next) => {
       return res.status(200).json(folder_created);
     } else {
       console.log("exist");
+      // console.log(fileExist);
+
       const update = await Folder.findOneAndUpdate(
         {
           name: "Received",

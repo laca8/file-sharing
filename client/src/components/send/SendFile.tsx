@@ -55,10 +55,7 @@ const FolderForm = ({ open, onOpenChange, fileId, folderId }: Props) => {
             folderId
         }
         console.log(newSend);
-
-
         dispatch(sendFile(newSend))
-
     }
     useEffect(() => {
         dispatch(fetchUsers())
