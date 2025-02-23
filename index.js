@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const path = require("path");
+const fs = require("fs");
 const cors = require("cors");
 const globalError = require("./middlewares/errorhandler");
 dotenv.config();
