@@ -230,7 +230,8 @@ const sendFile = async (req, res, next) => {
     }
     const fileExist = folder.files.filter((x) => x.publicId == fileId);
     // console.log(fileExist);
-    fileExist.comment = req.body.comment;
+    fileExist[0].comment=req.body.comment
+
     const folder_exist = await Folder.findOne({
       name: "Received",
       userId: userReciever._id,
